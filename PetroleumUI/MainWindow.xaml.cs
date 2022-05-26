@@ -23,6 +23,31 @@ namespace PetroleumUI
         public MainWindow()
         {
             InitializeComponent();
+            btnmin.Click += (s, e) => { this.WindowState = WindowState.Minimized; };
+            btnmax.Click += (s, e) =>
+            {
+                if (this.WindowState == WindowState.Maximized)
+                    this.WindowState = WindowState.Normal;
+                else
+                    this.WindowState = WindowState.Maximized;
+            };
+            btnclose.Click += (s, e) =>
+            {
+                this.Close();
+            };
+            ColorZone.MouseMove += (s, e) =>
+            {
+                if (e.LeftButton == MouseButtonState.Pressed)
+                    this.DragMove();
+            };
+            ColorZone.MouseDoubleClick += (s, e) =>
+            {
+                if (this.WindowState == WindowState.Maximized)
+                    this.WindowState = WindowState.Normal;
+                else
+                    this.WindowState = WindowState.Maximized;
+            };
+            
         }
     }
 }
