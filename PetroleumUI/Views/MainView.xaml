@@ -1,4 +1,4 @@
-﻿<Window x:Class="PetroleumUI.MainWindow"
+﻿<Window x:Class="PetroleumUI.Views.MainView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -26,7 +26,16 @@
             IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
             <materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel MinWidth="220">
-
+                    <ListBox ItemsSource="{Binding MenuBars}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="{Binding Icon}" Margin="15,0" />
+                                    <TextBlock Text="{Binding Title}" Margin="10,0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
 
