@@ -1,4 +1,6 @@
-﻿using Prism.DryIoc;
+﻿using PetroleumUI.ViewModels;
+using PetroleumUI.Views;
+using Prism.DryIoc;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;
@@ -17,12 +19,15 @@ namespace PetroleumUI
     {
         protected override Window CreateShell()
         {
-            return Container.Resolve<MainWindow>();
+            return Container.Resolve<MainView>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>();
+            containerRegistry.RegisterForNavigation<WellSetView, WellSetViewModel>();
+            containerRegistry.RegisterForNavigation<MFlowView, MFlowViewModel>();
+            containerRegistry.RegisterForNavigation<SettingView, SettingViewModel>();
         }
     }
 }
